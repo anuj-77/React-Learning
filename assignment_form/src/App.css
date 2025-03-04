@@ -7,7 +7,10 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  background-color: #7da6b9;
+  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190221/ourmid/pngtree-simple-e-commerce-jobs-career-image_21503.jpg');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +18,7 @@ body {
 }
 
 .form-container {
-  background-color: white;
+  background-color: rgb(146, 147, 230);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -36,7 +39,8 @@ form {
 label {
   text-align: left;
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight:bold ;
 }
 
 input[type="text"],
@@ -46,7 +50,7 @@ select,
 textarea {
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #7a6868;
   border-radius: 4px;
 }
 
@@ -61,7 +65,7 @@ input[type="radio"] {
 
 button {
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #72e081;
   color: white;
   border: none;
   border-radius: 4px;
@@ -70,7 +74,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #20882e;
 }
 
 input[type="checkbox"] {
@@ -81,4 +85,9 @@ input[type="checkbox"] {
   color: red;
   font-size: 12px;
   margin-top: 5px;
+}
+#gender{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
 }

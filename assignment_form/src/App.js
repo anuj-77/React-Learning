@@ -3,34 +3,37 @@ import './App.css';
 
 const RegistrationForm = () => {
 
-    // const [firstName,setFirstName] = useState({firstName:""})
-    // const [lasttName,setlastName] = useState({lastName:""})
-
-    const [formData, setFormData] = useState({
+    const formValues ={
         firstName: "",
         lastName: "",
         phone: '',
         email: '',
-        gender: '',
+        gender: 'Male',
         state: '',
         address: '',
         password: '',
         confirmPassword: '',
-        terms: false,
-    });
+        CheckBox: false,
+    }
+
+    const [formData, setFormData] = useState({...formValues});
 
 
     const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
+        // console.log("e is this",e);
         const { name, value, type, checked } = e.target;
+        // console.log([name],checked);
         setFormData({
             ...formData,
             [name]: type === 'checkbox' ? checked : value,
         });
     };
 
-    const validateForm = () => {
+    const validateForm = () => 
+        {
+            
         const newErrors = {};
         if (!formData.firstName || formData.firstName.length < 2 || formData.firstName.length > 30) {
             newErrors.firstName = 'First name must be between 2 and 30 characters.';
@@ -41,6 +44,12 @@ const RegistrationForm = () => {
         if (!/^\d{10}$/.test(formData.phone)) {
             newErrors.phone = 'Phone number must be 10 digits.';
         }
+        if(!Number.isNaN(formData.phone))
+            {
+                console.log("I was here");
+                newErrors.phone = "Phone Number must be a number";
+            }
+   
         if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Please enter a valid email address.';
         }
@@ -56,18 +65,22 @@ const RegistrationForm = () => {
         if (formData.password !== formData.confirmPassword) {
             newErrors.confirmPassword = 'Passwords do not match.';
         }
-        if (!formData.terms) {
-            newErrors.terms = 'You must accept the terms and conditions.';
+        if (!formData.CheckBox) {
+            newErrors.CheckBox = 'You must accept the CheckBox and conditions.';
         }
-
+        console.log(newErrors);
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if (validateForm()) {
             alert('Form submitted successfully');
+        }
+        else{
+            alert("Form Not Submitted");
         }
     };
 
@@ -82,9 +95,8 @@ const RegistrationForm = () => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    required
-                    minLength="2"
-                    maxLength="30"
+                    placeholder='First Name'
+
                 />
                 {errors.firstName && <div className="error-message">{errors.firstName}</div>}
 
@@ -95,9 +107,8 @@ const RegistrationForm = () => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    required
-                    minLength="2"
-                    maxLength="30"
+                    placeholder='Second Name'
+                     
                 />
                 {errors.lastName && <div className="error-message">{errors.lastName}</div>}
 
@@ -108,9 +119,7 @@ const RegistrationForm = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    required
-                    pattern="^\d{10}$"
-                    title="10 digits required"
+                    placeholder='Ten Digit Phone Number'
                 />
                 {errors.phone && <div className="error-message">{errors.phone}</div>}
 
@@ -121,11 +130,13 @@ const RegistrationForm = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
+                     
                 />
                 {errors.email && <div className="error-message">{errors.email}</div>}
 
+                <div id = 'gender'>
                 <label>Gender:</label>
+                <label htmlFor="male">Male
                 <input
                     type="radio"
                     id="male"
@@ -133,9 +144,11 @@ const RegistrationForm = () => {
                     value="Male"
                     onChange={handleChange}
                     checked={formData.gender === 'Male'}
-                    required
+                     
                 />
-                <label htmlFor="male">Male</label>
+
+                        </label>
+                    <label htmlFor="female">Female
                 <input
                     type="radio"
                     id="female"
@@ -143,10 +156,12 @@ const RegistrationForm = () => {
                     value="Female"
                     onChange={handleChange}
                     checked={formData.gender === 'Female'}
-                    required
-                />
-                <label htmlFor="female">Female</label>
+                     
+                    />
+
+                </label>
                 {errors.gender && <div className="error-message">{errors.gender}</div>}
+                </div>
 
                 <label htmlFor="state">State:</label>
                 <select
@@ -154,7 +169,7 @@ const RegistrationForm = () => {
                     name="state"
                     value={formData.state}
                     onChange={handleChange}
-                    required
+                     
                 >
                     <option value="">Select State</option>
 
@@ -193,7 +208,7 @@ const RegistrationForm = () => {
                     <option value="Uttar Pradesh">Uttar Pradesh</option>
                     <option value="West Bengal">West Bengal</option>
                 </select>
-                
+
                 {errors.state && <div className="error-message">{errors.state}</div>}
 
                 <label htmlFor="address">Address:</label>
@@ -202,7 +217,7 @@ const RegistrationForm = () => {
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    maxLength="100"
+                    placeholder='Use exact address as per AADHAR'
                 ></textarea>
 
                 <label htmlFor="password">Password:</label>
@@ -212,9 +227,8 @@ const RegistrationForm = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    required
-                    minLength="6"
-                    maxLength="20"
+                     
+                    placeholder='Password'
                 />
                 {errors.password && <div className="error-message">{errors.password}</div>}
 
@@ -225,22 +239,25 @@ const RegistrationForm = () => {
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    required
+                    placeholder='Confirm Password'
+                     
                 />
                 {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
 
+                <div>
                 <input
                     type="checkbox"
-                    id="terms"
-                    name="terms"
-                    checked={formData.terms}
+                    id="CheckBox"
+                    name="CheckBox"
+                    checked={formData.CheckBox}
                     onChange={handleChange}
-                    required
+                     
                 />
-                <label htmlFor="terms">I accept the terms and conditions</label>
-                {errors.terms && <div className="error-message">{errors.terms}</div>}
+                <label htmlFor="CheckBox">I accept the CheckBox and conditions</label>
+                {errors.CheckBox && <div className="error-message">{errors.CheckBox}</div>}
+                </div>
 
-                <button type="submit">Submit</button>
+                <button type="submit" disabled={!formData.CheckBox}>Submit</button>
             </form>
         </div>
     );
