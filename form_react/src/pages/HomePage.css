@@ -1,0 +1,124 @@
+/* HomePage.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .homepage-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    height: 80vh;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/008/311/935/non_2x/the-illustration-graphic-consists-of-abstract-background-with-a-blue-gradient-dynamic-shapes-composition-eps10-perfect-for-presentation-background-website-landing-page-wallpaper-vector.jpg");
+  }
+  
+  .header {
+    background-color: #363636;
+    border-top-left-radius: 15px;
+    border-top-right-radius:15px;
+    padding: 10px 0;
+  }
+  
+  .navbar {
+    display: flex;
+    height: 25px;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-item {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .hero-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .hero-title {
+    font-size: 2.5em;
+    margin: 0;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2em;
+    color: #b9a9b9;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .features-section {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .feature {
+    background-color: #a4b6f1;
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  .feature-title {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+  }
+  
+  .feature-description {
+    margin: 0;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius:15px;
+  }
+  

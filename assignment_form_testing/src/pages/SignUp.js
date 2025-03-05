@@ -11,7 +11,7 @@ const SignUp = () => {
   }, {});
 
   const [formData, setFormData] = useState(initialValues);
-  const [newErrors,setErrors] = useState();
+  const [newErrors, setErrors] = useState();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -27,11 +27,11 @@ const SignUp = () => {
     const newErrors = 0;
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length ===0){
+    if (Object.keys(newErrors).length === 0) {
       const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
       existingUsers.push(formData);
-      localStorage.setItem("users",JSON.stringify(existingUsers));
-      alert ("Successful");
+      localStorage.setItem("users", JSON.stringify(existingUsers));
+      alert("Successful");
       navigate("/login");
     }
   };
